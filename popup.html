@@ -1,29 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Save Tabs</title>
+  <title>Tab Saver & Loader</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      padding: 10px;
-      width: 200px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 15px;
+      width: 320px; /* Slightly wider for better layout */
+      background-color: #f4f7f6;
+      color: #333;
+      margin: 0;
+      box-sizing: border-box;
     }
-    input, button {
-      width: 100%;
+
+    h3 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      color: #2c3e50;
+      font-size: 1.1em;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 8px;
+    }
+
+    div {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    input[type="text"],
+    select {
+      width: calc(100% - 22px); /* Account for padding and border */
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 0.9em;
+      background-color: #fff;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      margin-right: 8px; /* Spacing between buttons */
+    }
+
+    button:last-child {
+      margin-right: 0;
+    }
+
+    #saveTabsButton {
+      background-color: #28a745; /* Green for save */
+      color: white;
+    }
+    #saveTabsButton:hover {
+      background-color: #218838;
+      transform: translateY(-1px);
+    }
+    #saveTabsButton:active {
+      transform: translateY(0);
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: space-between;
       margin-top: 10px;
+    }
+
+    #loadSelectedButton {
+      flex-grow: 1; /* Allow load button to take more space */
+      background-color: #007bff; /* Blue for load */
+      color: white;
+    }
+    #loadSelectedButton:hover {
+      background-color: #0069d9;
+      transform: translateY(-1px);
+    }
+    #loadSelectedButton:active {
+      transform: translateY(0);
+    }
+
+    #deleteSelectedButton {
+      background-color: #dc3545; /* Red for delete */
+      color: white;
+      margin-left: 8px; /* Space from load button */
+    }
+    #deleteSelectedButton:hover {
+      background-color: #c82333;
+      transform: translateY(-1px);
+    }
+    #deleteSelectedButton:active {
+      transform: translateY(0);
+    }
+
+    /* Optional: Add some subtle shadow for depth */
+    body {
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
   </style>
 </head>
 <body>
-  <h3>Save Tabs</h3>
-  <input type="text" id="filename" placeholder="Enter filename (e.g., tabs.txt)" />
-  <button id="save">Save Tabs</button>
-  <hr />
-  <h3>Open Tabs from File</h3>
-  <input type="file" id="fileInput" />
-  <button id="openTabs">Open Tabs</button>
+  <h3>Save Current Tabs</h3>
+  <div>
+    <label for="filenameInput">Give your tab list a name:</label>
+    <input type="text" id="filenameInput" placeholder="e.g., Work Session, Weekend Research"/>
+    <button id="saveTabsButton">Save Tabs</button>
+  </div>
+
+  <h3>Load or Delete Saved Tabs</h3>
+  <div>
+    <label for="savedFilesDropdown">Select a saved list:</label>
+    <select id="savedFilesDropdown">
+      <option value="">-- Select a saved list --</option>
+    </select>
+    <div class="button-group">
+      <button id="loadSelectedButton">Load Selected</button>
+      <button id="deleteSelectedButton">Delete Selected</button>
+    </div>
+  </div>
+
   <script src="popup.js"></script>
 </body>
 </html>

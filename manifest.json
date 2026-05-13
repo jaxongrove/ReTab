@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "ReTab",
-  "version": "1.1",
-  "description": "Save all open tabs to a text file.",
-  "permissions": ["tabs", "downloads"],
+  "name": "Save Tabs to Storage",
+  "version": "1.2",
+  "description": "Save and load all open tabs from extension's local storage.",
+  "permissions": ["tabs", "storage"],
   "background": {
     "service_worker": "background.js"
   },
@@ -18,5 +18,4 @@
     "48": "icon.png",
     "128": "icon.png"
   }
-
 }
